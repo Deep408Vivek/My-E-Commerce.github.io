@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-commerce Website with Dynamic Filter</title>
+    <style>
+        /* Add some basic styles for demonstration purposes */
+        .product {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-button {
+            padding: 10px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            z-index: 1;
+        }
+        .dropdown-option {
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
+        .dropdown-container:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>E-commerce Website with Dynamic Filter</h1>
+    
+    <!-- Product List -->
+    <div id="productList">
+        <!-- Product items will be displayed here -->
+    </div>
+
+    <!-- Filter Button -->
+    <div class="dropdown-container" id="filterContainer">
+        <div class="dropdown-button" id="filterButton">Filter by Price</div>
+        <div class="dropdown-content" id="filterOptions">
+            <!-- Filter options will be added here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // Sample product data (replace with your actual product data)
+        const products = [
+            { name: "Product 1", price: 5 },
+            { name: "Product 2", price: 15 },
+            { name: "Product 3", price: 25 },
+            { name: "Product 4", price: 10 },
+            { name: "Product 5", price: 30 },
+        ];
+
+        // Function to render the product list based on price range
+        function renderProducts(minPrice, maxPrice) {
+            const productList = document.getElementById("productList");
+            productList.innerHTML = ''; // Clear previous results
+
+            products.forEach(product => {
+                if (product.price >= minPrice && product.price <= maxPrice) {
+                    const productElement = document.createElement("div");
+                    productElement.classList.add("product");
+                    productElement.textContent = `${product.name} - $${product.price}`;
+                    productList.appendChild(productElement);
+                }
+            });
+        }
+
+        // Function to create filter options dynamically
+        function createFilterOptions() {
+            const filterOptions = document.getElementById("filterOptions");
+            filterOptions.innerHTML = ''; // Clear previous options
+
+            const priceRanges = [
+                { min: 0, max: 10 },
+                { min: 11, max: 20 },
+                { min: 21, max: 30 },
+                // Add more price ranges as needed
+            ];
+
+            priceRanges.forEach(range => {
+                const optionElement = document.createElement("a");
+                optionElement.classList.add("dropdown-option");
+                optionElement.textContent = `$${range.min}-${range.max}`;
+                optionElement.addEventListener("click", () => {
+                    renderProducts(range.min, range.max);
+                });
+                filterOptions.appendChild(optionElement);
+            });
+        }
+
+        // Add a click event listener to the filter button
+        const filterButton = document.getElementById("filterButton");
+        filterButton.addEventListener("click", createFilterOptions);
+
+        // Initial render with all products
+        renderProducts(0, Infinity);
+    </script>
+</body>
+</html>

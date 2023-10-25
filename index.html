@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>E-Commerce</title>
+</head>
+<body>
+    <header>
+        <div class="navBar" id="home1">
+            <div class="logo">
+                <!-- <i class="fa-solid fa-bag-shopping"></i> -->
+                <p>E</p>
+                <h2 style="color: coral">-</h2>
+                <h2 style="color: rgb(16, 65, 244);">Shopping</h2>
+            </div>
+
+            <div class="search">
+                <select class="search-select">
+                    <option value="">All</option>
+                </select>
+                <input class="search-input" placeholder="Search for products">
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+
+            <div class="cart" id="cartId">
+                <button onclick="document.getElementById('cart-modal').style.display='block'" id="showCartButton">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Cart
+                </button>
+                <div id="cart-modal" class="cartModal">
+                    <div class="cart-modal-content animate" method="post">
+                        <div class="imgcontainer">
+                            <span onclick="document.getElementById('cart-modal').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <i style="color: crimson;" class="fa-solid fa-cart-shopping">&nbsp;<p style="color: coral;">My Cart</p></i>
+                        </div>
+                        <!-- <span class="close">&times;</span> -->
+                        <!-- <ul id="cart"></ul> -->
+                        <table>
+                            <tr>
+                                <th>Item name</th>
+                                <th>Item price</th>
+                            </tr>
+                            <tr>
+                                <td id="cartItemName"></td>
+                                <td id="cartItemPrice"></td>
+                            </tr>
+                            
+                        </table>
+                        <!-- <ul id="cartItemList"> -->
+                            <!-- <li id="cartItemList"> -->
+                                <!-- <p id="cartItemPrice"></p> -->
+                                <!-- <p id="cartItemPrice"></p> -->
+                            <!-- </li> -->
+                        <!-- </ul> -->
+                        
+                        <hr>
+                        <p align="right">Total: ₹<span id="totalPrice">0.00</span></p>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="login">
+                <button class="logBtn" onclick="document.getElementById('id01').style.display='block'">
+                    <i class="fa-solid fa-user"></i>
+                    Login
+                    <br>
+                    Register
+                </button>
+                <div id="id01" class="modal1">
+                    <form class="modal-content1 animate" action="" method="post">
+                        <div class="imgcontainer">
+                          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                          <i class="fa-solid fa-user"></i>
+                        </div>
+                    
+                        <div class="container1">
+                          <label for="uname"><b>Email or Number</b></label>
+                          <input type="text" placeholder="Enter Username" name="uname" required>
+                    
+                          <label for="psw"><b>Password</b></label>
+                          <input type="password" placeholder="Enter Password" name="psw" required>
+                            
+                          <button onclick="loggedIn()" type="submit">Login</button>
+                          <label>
+                            <input class="rem" type="checkbox" checked="checked" name="remember"> Remember me
+                          </label>
+                        </div>
+                    
+                        <div class="container2" style="background-color:#f1f1f1">
+                          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                          <span class="psw">Forgot <a href="#">password?</a></span>
+                        </div>
+                    </form>
+                      <p id="errorText" style="color: red;"></p>
+                </div>
+            </div>
+
+            <div class="order">
+                <button>
+                    <i class="fa-solid fa-truck-fast"></i>
+                    My
+                    <br>
+                    Orders
+                </button>
+            </div>
+
+            <div class="darkMode">
+                <button onclick="darkFunction()">
+                    <i class="fa-sharp fa-solid fa-circle-half-stroke"></i>
+                    Theme
+                    <br>
+                    &#128129;Change
+                </button>
+            </div>
+
+            <div class="service-number">
+                <p>Customer Service</p>
+                <p>+ 123 1234567890</p>
+            </div>
+        </div>
+        <div class="nav-2">
+
+            <div class="all">
+                <a href="">
+                    <i class="fa-solid fa-bars"></i>
+                    All
+                </a>
+            </div>
+            <div class="option">
+                <li><a href="#home">Home</a></li>
+                <li><a href="">Category</a></li>
+                <!-- <li class="filter"><a href=""><span onclick="getElementById('btn').style.display='btn'">Filter</span></a>
+                    <button class="btn active" onclick="filterSelection('all')"><option value="price"></option>All Show</button>
+                    <button class="btn" onclick="filterSelection('min')"><option value="price"></option>Below ₹ 500</button>
+                    <button class="btn" onclick="filterSelection('m500')"><option value="price"></option>Between ₹ 500 - ₹ 1500</button>
+                    <button class="btn" onclick="filterSelection('m1500')"><option value="price"></option>Between ₹ 1500 - ₹ 3000</button>
+                    <button class="btn" onclick="filterSelection('m3000')"><option value="price"></option>Between ₹ 3000 - ₹ 12000</button>
+                    <button class="btn" onclick="filterSelection('m12000')"><option value="price"></option>Between ₹ 12000 - ₹18000</button>
+                    <button class="btn" onclick="filterSelection('max')"><option value="price"></option>Above ₹18000</button>
+                </li> -->
+                <li>
+                    <button class="select-button" id="showOptionButton">Select</button>
+                    <div class="hidden" id="options">
+                        <option value="">A</option>
+                        <option value="">B</option>
+                        <option value="">C</option>
+                        <option value="">D</option>
+                        <option value="">E</option>
+                    </div>
+                </li>
+                <li><a href="#electro">Electronics</a></li>
+                <li><a href="#outFit">Outfits</a></li>
+                <li><a href="#mobile">Mobiles</a></li>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home -->
+    <div class="home" id="home">
+        <img class="img2" src="png2.png" alt="">
+        <div class="topSales">
+            <h2>Top Sales Products</h2>
+            <div class="topImg">
+                <div class="top1 top">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/k/t/2/11-pro-5g-rmx3771-realme-original-imagq6aszgmb4xja.jpeg?q=70" alt="" class="realme10">
+                    <div>
+                        <a href="realme5G.html">
+                            Realme 11 Pro 5G
+                        </a>
+                        <p id="price" class="price"> Price - ₹23,999</p>
+                    </div>
+                </div>
+                <div class="top2 top">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/h/x/a/-original-imagrxbufb6tqzjc.jpeg?q=70" alt="" class="realme5">
+                    <div>
+                        <a href="oppoA78.html">
+                            OPPO A78 5G
+                        </a>
+                        <p class="price"> Price - ₹18,999</p>
+                    </div>
+                </div>
+                <div class="top3 top">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/top/f/4/i/4xl-ucntop01peach-fidoza-original-imagcnqf3dz8b469-bb.jpeg?q=70" alt="">
+                    <div>
+                        <a href="">
+                            Casual Regular <br> Sleeves <br> Embroidered
+                        </a>
+                        <p class="price"> Price - ₹443</p>
+                    </div>
+                </div>
+                <div class="top4 top">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/l41n2q80/t-shirt/k/x/j/l-1jgrf-013-blk-jugular-original-imagff7w8tfwd2dr.jpeg?q=70" alt="" class="realme5">
+                    <div>
+                        <a href="">
+                            Men Striped <br> Round Neck
+                        </a>
+                        <p class="price"> Price - ₹299</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lap">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/computer/4/3/l/-original-imagdx9qetmzqjz7.jpeg?q=70" alt="">
+            <p>ASUS Vivobook 15 Core i3 11th Gen 1115G4 - (8 GB/256 GB SSD/Windows 11 Home) X515EA-EJ312W Thin and Light Laptop  (15.6 Inch, Transparent Silver, 1.80 kg)</p>
+            <h3 style="color: red;">Out of Stock</h3>
+        </div>
+    </div>
+
+    <hr style="color: white;">
+    <!-- Content -->
+    <div class="content">
+        <h1 style="margin-left: 32.5rem;">Mobile Shop</h1>
+        <div class="mobile" id="mobile">
+            <div class="realme">
+                <div class="m3000 filterDiv" id="">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/9/m/p/narzo-n53-rmx3761-realme-original-imagpygt4ywjecxk.jpeg?q=70" alt="Realme Narzo N53" class="realme5">
+                    <div class="N53">
+                        <a href="">
+                            <p class="name">Realme Narzo N53</p>
+                        </a>
+                        <p class="price"> Price - ₹11,569</p>
+                        <button class="addCartButton" data-price="11569" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="filterDiv m3000">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/b/i/x/-original-imagt4qptrkzwmxa.jpeg?q=70" alt="">
+                    <div class="C51">
+                        <a href="">
+                            <p class="name">Realme N53</p>
+                        </a>
+                        <p class="price"> Price - ₹8,999</p>
+                        <button class="addCartButton" data-price="8999" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="max filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/k/t/2/11-pro-5g-rmx3771-realme-original-imagq6aszgmb4xja.jpeg?q=70" alt="" class="realme10">
+                    <div class="Pro11">
+                        <a href="">
+                            <p class="name">Realme 11 Pro 5G</p>
+                        </a>
+                        <p class="price"> Price - ₹23,999</p>
+                        <button class="addCartButton" data-price="23999" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="m12000 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/z/j/m/11x-5g-rmx3785-realme-original-imagsjx45pgvavdm.jpeg?q=70" alt="" class="realme10">
+                    <div class="re11X">
+                        <a href="">
+                            <p class="name">Realme 11X 5G</p>
+                        </a>
+                        <p class="price"> Price - ₹15,999</p>
+                        <button class="addCartButton" data-price="15999" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="oppo">
+                <div class="max filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/h/x/a/-original-imagrxbufb6tqzjc.jpeg?q=70" alt="" class="realme5">
+                    <div class="A78">
+                        <a href="">
+                            <p class="name">OPPO A78 5G</p>
+                        </a>
+                        <p class="price"> Price - ₹18,999</p>
+                        <button class="addCartButton" data-price="18999" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="m3000 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/1/s/n/-original-imaggkzxfgweseym.jpeg?q=70" alt="">
+                    <div class="A17">
+                        <a href="">
+                            <p class="name">OPPO A17</p>
+                        </a>
+                        <p class="price"> Price - ₹11,999</p>
+                        <button class="addCartButton" data-price="11999" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="max filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/m/9/7/-original-imagrxbuvyjxa9vb.jpeg?q=70" alt="" class="realme10">
+                    <div class="F21s">
+                        <a href="">
+                            <p class="name">OPPO F21s Pro</p>
+                        </a>
+                        <p class="price"> Price - ₹21,999</p>
+                        <button class="addCartButton" data-price="21999" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="m12000 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/r/y/y/-original-imaggm3zwtuv7ggg.jpeg?q=70" alt="" class="realme10">
+                    <div class="A77s">
+                        <a href="">
+                            <p class="name">OPPO A77s</p>
+                        </a>
+                        <p class="price"> Price - ₹16,499</p>
+                        <button class="addCartButton" data-price="16499" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="outfits" id="outFit">
+            <h1 style="margin-left: 32.4rem;">Mens Outfits</h1>
+            <div class="outFitsR">
+                <div class="m500 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/jacket/2/n/s/s-no-varsity02-alph-r-be-savage-original-imagphm8zjukzwag.jpeg?q=70" alt="" class="realme5">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Men Colorblock Varsity Jacket</p>
+                        </a>
+                        <p class="price"> Price - ₹799</p>
+                        <button class="addCartButton" data-price="799" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="min filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/k4bms280/shirt/5/z/6/40-dlm484-deelmo-original-imafn969rxheeent.jpeg?q=70" alt="" class="realme5">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Men Regular Fit Solid Button</p>
+                        </a>
+                        <p class="price"> Price - ₹453</p>
+                        <button class="addCartButton" data-price="453" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="min filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/l41n2q80/t-shirt/k/x/j/l-1jgrf-013-blk-jugular-original-imagff7w8tfwd2dr.jpeg?q=70" alt="" class="realme5">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Men Striped Round Neck</p>
+                        </a>
+                        <p class="price"> Price - ₹299</p>
+                        <button class="addCartButton" data-price="299" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="min filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/ethnic-set/v/1/h/38-05km15-yellow-armaan-ethnic-original-imag7jkyvxspehpq-bb.jpeg?q=70" alt="">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Men Cotton Straight Kurta</p>
+                        </a>
+                        <p class="price"> Price - ₹454</p>
+                        <button class="addCartButton" data-price="454" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <h1 style="margin-left: 32.5rem;">Girls Outfits</h1>
+            <div class="outFitsR">
+                <div class="m500 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/kurta/d/h/a/xl-jashavi-pmd-fashion-original-imaghhpqyzsvpvfw.jpeg?q=70" alt="" class="realme5">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Women Anarkali Kurta</p>
+                        </a>
+                        <p class="price"> Price - ₹579</p>
+                        <button class="addCartButton" data-price="579" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="min filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/dress/a/o/d/m-na-dress-44-iuga-original-imagzcqxf8tfwsm9.jpeg?q=70" alt="">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Women Bodycon Black Dress</p>
+                        </a>
+                        <p class="price"> Price - ₹418</p>
+                        <button class="addCartButton" data-price="418" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="min filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/top/z/t/i/l-7003-kamdev-original-imagkdcdvnvrchz6.jpeg?q=70" alt="">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Women Black Top</p>
+                        </a>
+                        <p class="price"> Price - ₹299</p>
+                        <button class="addCartButton" data-price="299" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="min filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/top/f/4/i/4xl-ucntop01peach-fidoza-original-imagcnqf3dz8b469-bb.jpeg?q=70" alt="">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Casual Regular Sleeves Embroidered</p>
+                        </a>
+                        <p class="price"> Price - ₹443</p>
+                        <button class="addCartButton" data-price="443" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <h1 id="electro" style="margin-left: 29rem;">Electronics products</h1>
+            <div class="outFitsR">
+                <div class="m1500 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/l572ufk0/headphone/x/o/p/air-3-neo-realme-original-imagfxcbkt8rmqbg.jpeg?q=70" alt="" class="realme5">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Realme Buds Air Wireless</p>
+                        </a>
+                        <p class="price"> Price - ₹1,999</p>
+                        <button class="addCartButton" data-price="1999" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="m500 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/smartwatch/o/3/c/1-83-38083pp02-android-ios-fastrack-yes-original-imagnhzebkerttfn.jpeg?q=70" alt="">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">Fastrack Revoltt FS1</p>
+                        </a>
+                        <p class="price"> Price - ₹1,299</p>
+                        <button class="addCartButton" data-price="1299" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="m500 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/k0plpjk0/mixer-grinder-juicer/b/v/s/flipkart-smartbuy-fksbmg50mkdhnbw-original-imafkfuv4ts5zumg.jpeg?q=70" alt="">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">PowerChef Mixer Grinder</p>
+                        </a>
+                        <p class="price"> Price - ₹1,299</p>
+                        <button class="addCartButton" data-price="1299" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+                <div class="m500 filterDiv">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/kuof5ow0/trimmer/7/z/f/0-5-10-mm-bt3101-15-stainless-steel-cordless-philips-original-imag7r4r7ztgnuyk.jpeg?q=70" alt="">
+                    <div class="jacket">
+                        <a href="">
+                            <p class="name">PHILIPS Trimmer</p>
+                        </a>
+                        <p class="price"> Price - ₹1,199</p>
+                        <button class="addCartButton" data-price="1199" onclick="addToCart()">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Add to Cart
+                        </button>
+                        <button class="order-button" onclick="orderNow()">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            Order Now
+                        </button>
+                        <button class="cancel-order" onclick="orderCancel()">
+                            <i class="fa-solid fa-xmark"></i>
+                            Cancel
+                        </button>
+                        
+                        <p class="demo1"></p>
+                        <p class="demo2"></p>
+                        <p class="demo3"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="foot-panel1">
+            <a href="#home1">Back to top</a>
+        </div>
+
+        <div class="foot-panel2">
+            <ul>
+                <p>Get to know us</p>
+                <a href="">Careers</a>
+                <a href="">About E-Shopping</a>
+            </ul>
+
+            <ul>
+                <p>Connect with Us</p>
+                <a href="">Facebook</a>
+                <a href="">Instagram</a>
+                <a href="">About us</a>
+            </ul>
+
+            <ul>
+                <p>Let Us Help You</p>
+                <a href="">COVID-19 and E-Shopping</a>
+                <a href="">Your Account</a>
+                <a href="">7 days return policy</a>
+                <a href="">Help</a>
+            </ul>
+
+            <div class="me">
+                <p>Developed by [@Vivekdeep] Vivek Vishwakarma</p>
+                <a href="https://github.com/Vivekdeep4?tab=repositories"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/vivek-vishwakarma-520159240/"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var modal = document.getElementById('id01');
+        function loggedIn(){
+            document.write("Congrats you are logged in!");
+        }
+
+            const submitButtons = document.querySelectorAll('.order-button');
+            const messages = document.querySelectorAll('.demo1');
+
+                submitButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                messages[index].textContent = "Your product has been successfully ordered";
+                messages[index].style.display = 'grid';
+            });
+        });
+
+        const cancelButtons = document.querySelectorAll('.cancel-order');
+            const message2 = document.querySelectorAll('.demo2');
+
+                cancelButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                message2[index].textContent = "Your order has been successfully Cancelled";
+                message2[index].style.display = 'grid';
+            });
+        });
+
+        const cartButtons = document.querySelectorAll('.addCartButton');
+            const message3 = document.querySelectorAll('.demo3');
+
+                cartButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                message3[index].textContent = "Your product added to cart";
+                message3[index].style.display = 'grid';
+            });
+        });
+
+        filterSelection("all")
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filterDiv");
+            if (c == "all") c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                }
+            }
+
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+                }
+            }
+
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                        arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                    }
+                }
+                element.className = arr1.join(" ");
+            }
+
+            var btnContainer = document.getElementById("myFilterBtn");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function(){
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+
+        // Filter Select option
+            const showOptionButton = document.getElementById("showOptionButton");
+            const options = document.getElementById("options");
+            showOptionButton.addEventListener("click", () => {
+                if(options.classList.contains("hidden")){
+                    options.classList.remove("hidden");
+                }else{
+                    options.classList.add("hidden");
+                }
+            })
+        // Add to cart
+            let total = 0;
+            document.addEventListener("DOMContentLoaded", function(){
+            const addToCartDisplay = document.querySelectorAll(".addCartButton");
+            const cartListItemName = document.getElementById("cartItemName");
+            const cartListItemPrice = document.getElementById("cartItemPrice");
+            // const cartList = document.getElementById("cartItemList");
+            const cartTotal = document.getElementById("totalPrice");
+
+            addToCartDisplay.forEach(button => {
+                button.addEventListener("click", function(){
+                    const itemName = button.parentElement.textContent.trim().split('-')[0].trim();
+                    const itemPrice = parseInt(button.getAttribute("data-price"));
+                    total += itemPrice;
+                    addToCart1(itemName, itemPrice);
+                });
+            });
+            function addToCart1(itemName, itemPrice, total){
+                const cartItemName = document.createElement("table");
+                const cartItemPrice = document.createElement("table");
+                // const cartItemList = document.createElement("li");
+                cartItemName.textContent = `${itemName}`;
+                cartItemPrice.textContent = `₹${itemPrice}`;
+                // cartItemList.textContent = `${itemName}----------------₹${itemPrice}`;
+                cartListItemName.appendChild(cartItemName);
+                cartListItemPrice.appendChild(cartItemPrice);
+                // cartList.appendChild(cartItemList);
+                cartTotal.appendChild(total);
+            }
+        })
+
+        function darkFunction(){
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+
+    </script>
+</body>
+</html>

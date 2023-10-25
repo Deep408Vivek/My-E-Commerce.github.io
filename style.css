@@ -1,0 +1,634 @@
+*{
+    margin: 0;
+    font-family: Arial;
+    border: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: aquamarine;
+    animation: pulse ;
+}
+.dark-mode{
+    background-color: black;
+    color: white;
+}
+@keyframes pulse{
+    0%{
+        
+    }
+}
+
+.logo{
+    display: flex;
+    height: 50px;
+    margin-top: 15px;
+}
+.logo i{
+    font-size: 30px;
+    display: block;
+    color: white;
+}
+.logo p{
+    color: coral;
+    font-size: 25px;
+    
+}
+.navBar{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* gap: 100px; */
+    background-color: rgb(39, 36, 36);
+}
+.search{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 4px;
+    height: 25px;
+    width: 620px;
+}
+.hidden{
+    display: none;
+}
+.search-select{
+    background-color: #f3f3f3;
+    width: 50px;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.search-select:hover{
+    color: coral;
+}
+.search-input{
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
+.search-icon{
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: #f3f3f3;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    color: #0f1111;
+    cursor: pointer;
+}
+.search-icon:hover{
+    color: coral;
+}
+.service-number{
+    font-size: 0.8rem;
+    color: white;
+}
+.cart button{
+    background-color: transparent;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: white;
+}
+.cart button:hover{
+    color: aqua;
+}
+.cart i{
+    font-size: 30px;
+}
+.login button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+.login .logBtn:hover{
+    color: aqua;
+}
+
+.darkMode button{
+    background-color: transparent;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: white;
+}
+.darkMode i{
+    font-size: 15px;
+    
+}
+.darkMode button:hover{
+    color: aqua;
+}
+.order button{
+    background-color: transparent;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+}
+
+.order i{
+    font-size: 15px;
+}
+.order button:hover{
+    color: aqua;
+}
+
+.nav-2{
+    display: flex;
+    height: 40px;
+    width: 100%;
+    /* background-color: rgb(35, 53, 189); */
+    background-color: rgb(16, 156, 211);
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+.option{
+    margin-left: -26rem;
+    display: flex;
+    gap: 2.4rem;
+}
+.option select{
+    outline: none;
+}
+.option a:hover{
+    /* background-color: aqua;
+    border-radius: 5px; */
+    color: coral;
+}
+.nav-2 li{
+    list-style: none;
+}
+.nav-2 a{
+    text-decoration: none;
+    color: white;
+}
+.all{
+    color: white;
+    margin-left: -31rem;
+}
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+.cancelbtn {
+    width: auto;
+    padding: 8px 18px;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+.imgcontainer i{
+    font-size: 30px;
+}
+  
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+  
+.container1 {
+    padding: 16px;
+    border-radius: 10px;
+}
+.container2{
+    padding: 16px;
+    border-radius: 10px;
+}
+.container1 button{
+    background-color: rgb(16, 162, 220);
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+}
+.filter button{
+    display: none;
+}
+.select-button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.select-button option{
+    display: none;
+}
+.select-button:hover{
+    color: coral;
+}
+.container1 button:hover{
+    background-color: coral;
+}
+.container2 button{
+    background-color: rgb(16, 162, 220);
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+}
+.container2 button:hover{
+    background-color: coral;
+}
+.rem{
+    margin-left: 60px;
+}
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+.modal1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+.modal-content1 {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 300px;
+    border-radius: 10px;
+}
+.close{
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 45px;
+    margin-top: -10px;
+}
+  
+.close:hover,.close:focus {
+    color: red;
+    cursor: pointer;
+}
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom .6s
+}
+  
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+  
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+.select{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.home{
+    display: flex;
+}
+.home .img1{
+    height: 25rem;
+    margin-top: 0.3rem;
+}
+.home .img2{
+    height: 25rem;
+    padding: 0.6rem;
+}
+.lap img{
+    height: 20rem;
+    width: 25.4rem;
+    margin-top: 2rem;
+}
+.topImg{
+    display: grid;
+    grid-template-columns: repeat(2, 10rem);
+}
+.topImg a{
+    text-decoration: none;
+    color: blue;
+}
+.top1 img{
+    height: 9rem;
+    border-radius: 5px;
+}
+.top2 img{
+    height: 9rem;
+    border-radius: 10px;
+}
+.top3 img{
+    height: 9rem;
+    border-radius: 4px;
+    width: 7.5rem;
+}
+.top4 img{
+    height: 9rem;
+    border-radius: 4px;
+    width: 6.6rem;
+}
+.content h1{
+    margin-top: 2rem;
+}
+.mobile{
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.mobile .realme{
+    display: grid;
+    grid-template-columns: repeat(4, 19rem);
+    margin-left: 1.5rem;
+    margin-top: 2rem;
+}
+.mobile .oppo{
+    display: grid;
+    grid-template-columns: repeat(4, 19rem);
+    margin-left: 1.5rem;
+    margin-top: 2rem;
+}
+.mobile img{
+    height: 320px;
+    width: 270px;
+    border-radius: 20px;
+    background-color: aquamarine;
+    transition: all ease 1s;
+}
+.filterDiv:hover img{
+    scale: 1.1;
+}
+.topImg img{
+    transition: all ease 1s;
+}
+.top:hover img{
+    scale: 0.8;
+}
+.N53 a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.C51 a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.Pro11 a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.re11X a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.A78 a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.A17 a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.F21s a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.A77s a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+.jacket a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgb(18, 57, 234);
+}
+
+.addCartButton{
+    color: darkorchid;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    height: 1.5rem;
+    border-radius: 2px;
+    font-weight: bold;
+}
+.addCartButton:hover{
+    color: aqua;
+    background-color: coral;
+}
+
+.order-button{
+    color: rgb(8, 198, 14);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    height: 1.5rem;
+    border-radius: 2px;
+    font-weight: bold;
+}
+.cancel-order{
+    color: red;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    height: 1.5rem;
+    border-radius: 2px;
+    font-weight: bold;
+}
+.cancel-order:hover{
+    color: white;
+    background-color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+.cartModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+}
+.cart-modal-content {
+    background-color: rgb(225, 220, 223);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    box-shadow: 0px 0px 10px 0px #000;
+    border-radius: 4px;
+}
+
+/* Add styling for the cart */
+#cartBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: white;
+}
+.order-button:hover{
+    color: yellow;
+    background-color: rgb(216, 76, 195);
+}
+.outFitsR{
+    margin-bottom: 1rem;
+}
+.outfits{
+    margin-top: 2rem;
+    overflow: hidden;
+}
+.outFitsR{
+    display: grid;
+    grid-template-columns: repeat(4, 19rem);
+    margin-left: 1.5rem;
+    margin-top: 2rem;
+}
+.outfits img{
+    height: 320px;
+    width: 270px;
+    border-radius: 4px;
+    transition: all ease 1s;
+}
+footer{
+    margin-top: 15px;
+}
+
+.foot-panel1{
+    background-color: #37475a;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+}
+.foot-panel1 a{
+    text-decoration: none;
+    color: white;
+}
+
+.foot-panel2{
+    background-color: #222f3d;
+    color: white;
+    height: 250px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+ul{
+    margin-top: 30px;
+}
+
+ul a{
+    display: flex;
+    font-size: .85rem;
+    margin-top: 10px;
+    color: #dddddd;
+    text-decoration: none;
+}
+.me{
+    margin-top: 2rem;
+}
+.me i{
+    font-size: 1.7rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+.me i:hover{
+    color: coral;
+}
+.foot-panel3{
+    background-color: #222f3d;
+    color: white;
+    border-top: .5px solid white;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+.demo1{
+    color: rgb(31, 164, 16);
+    display: none;
+}
+.demo2{
+    color: #ff0000;
+    display: none;
+}
+.demo3{
+    color: rgb(46, 14, 253);
+    display: none;
+}
+table{
+    border-spacing: 30px 5px;
+}

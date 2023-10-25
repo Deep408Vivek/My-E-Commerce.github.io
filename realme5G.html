@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .top1 img{
+            height: 350px;
+            width: 250px;
+            border-radius: 10px;
+            transform-origin: center center;
+            animation: rotateAnimation 8s both infinite;
+            cursor: pointer;
+            }
+            @keyframes rotateAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(10deg);
+            }
+            20% {
+                transform: rotate(-10deg);
+            }
+        }
+        .top1{
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            margin-left: -300px;
+        }
+        .item a{
+            text-decoration: none;
+            font-size: 30px;
+            color: brown;
+        }
+        .price{
+            color: green;
+            font-size: 20px;
+        }
+        button{
+            height: 50px;
+            width: 200px;
+            font-weight: bold;
+            background-color: aqua;
+            border: none;
+            border-radius: 10px;
+            display: block;
+            margin-top: -175px;
+            margin-left: 800px;
+        }
+        button a{
+            text-decoration: none;
+            font-size: 20px;
+
+        }
+        button:hover{
+            background-color: rgb(160, 162, 205);
+            color: white;
+            font-weight: bold;
+        }
+        .funct{
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            margin-left: -500px;
+            margin-top: -100px;
+            gap: 120px;
+        }
+        .demo1{
+            color: rgb(68, 110, 6); 
+            margin-left: 800px;
+        }
+        .demo2{
+            color: rgb(20, 49, 194); 
+            margin-left: 800px;
+        }
+        .funct-button button{
+            cursor: pointer;
+            font-size: 20px;
+            background-color: lightsalmon;
+        }
+        .funct-button button:hover{
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <div class="top1">
+        <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/mobile/k/t/2/11-pro-5g-rmx3771-realme-original-imagq6aszgmb4xja.jpeg?q=70" id="rotatingImage" alt="" class="realme10">
+        <div class="item">
+            <a href="">
+                Realme 11 Pro 5G
+            </a>
+            <p id="price" class="price"> Price - ₹23,999</p>
+        </div>
+        <div class="funct">
+            <div class="funct-button">
+                <button class="order-button" onclick="orderNow()">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    Order Now
+                </button>
+                <p class="demo1"></p>
+            </div>
+            <div class="funct-button">
+                <button class="addCartButton" data-price="8999" onclick="addToCart()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Add to Cart
+                </button>
+                <p class="demo2"></p>
+            </div>
+        </div>
+        
+    </div>
+
+    <button class="back"><a href="index.html">Back to Main Page</a></button>
+
+    <script>
+        const rotatingImage = document.getElementById("rotatingImage");
+        let isRotating = true;
+        rotatingImage.addEventListener("click", () => {
+            if (isRotating) {
+                rotatingImage.style.animationPlayState = "paused";
+            } else {
+                rotatingImage.style.animationPlayState = "running";
+            }
+            isRotating = !isRotating;
+        });
+
+        const submitButtons = document.querySelectorAll('.order-button');
+            const messages = document.querySelectorAll('.demo1');
+
+                submitButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                messages[index].textContent = "Your product has been successfully ordered";
+                messages[index].style.display = 'grid';
+            });
+        });
+
+        const cartButtons = document.querySelectorAll('.addCartButton');
+            const message3 = document.querySelectorAll('.demo2');
+
+                cartButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                message3[index].textContent = "Your product added to cart";
+                message3[index].style.display = 'grid';
+            });
+        });
+    </script>
+    
+</body>
+</html>
